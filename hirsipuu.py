@@ -121,7 +121,7 @@ pelitilanne = {
     "arvaustilanne":[]
 }
 
-###PELI ALKAA!###
+###PELI ALKAA!!###
 print()
 print("Tervetuloa pelaamaan Ninon hirsipuuta.")
 print("Peli tallentuu aina automaattisesti kun poistut.")
