@@ -1,7 +1,6 @@
 import csv
 import json
 import random
-import asd
 
 def sananvalinta(): #arpoo sanan
     with open("sanat.csv", "r") as f:
