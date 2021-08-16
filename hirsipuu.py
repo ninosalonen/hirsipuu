@@ -122,29 +122,32 @@ pelitilanne = {
 }
 
 ###PELI ALKAA!!###
-print()
-print("Tervetuloa pelaamaan Ninon hirsipuuta.")
-print("Peli tallentuu aina automaattisesti kun poistut.")
-print()
-lataa = input("Lataa edellisestä kerrasta syöttämällä k, lataa uusi peli syöttämällä mitä tahansa: ").lower()
-if lataa == "k":
-    juttu = False
-    with open("save.json","r")as f:
-        reader=json.load(f)
-        for x in reader["arvaustilanne"]:
-            if x == "_":
-                lataaSavesta()
-                juttu = True
-                break
-        if not(juttu):
-            print("Voitit viimekerralla, ladataan uusi peli...") #tarkastaa, miten edellinen plei päättyi, jos voitti,
-            lataaAlusta() #ilmoittaa että voitti ja lataa uuden pelin.
-            save(pelitilanne)
-else:
-    lataaAlusta()
-    save(pelitilanne)
-if pelitilanne["vaarVast"] > 6:
-    print("Hävisit viimekerralla, ladataan uusi peli...") #jos hävinnyt viimekerralla, lataa uuden pelin.
-    lataaAlusta()
-    save(pelitilanne)
-peliKoko()
+try:
+  print()
+  print("Tervetuloa pelaamaan Ninon hirsipuuta.")
+  print("Peli tallentuu aina automaattisesti kun poistut.")
+  print()
+  lataa = input("Lataa edellisestä kerrasta syöttämällä k, lataa uusi peli syöttämällä mitä tahansa: ").lower()
+  if lataa == "k":
+      juttu = False
+      with open("save.json","r")as f:
+          reader=json.load(f)
+          for x in reader["arvaustilanne"]:
+              if x == "_":
+                  lataaSavesta()
+                  juttu = True
+                  break
+          if not(juttu):
+              print("Voitit viimekerralla, ladataan uusi peli...") #tarkastaa, miten edellinen plei päättyi, jos voitti,
+              lataaAlusta() #ilmoittaa että voitti ja lataa uuden pelin.
+              save(pelitilanne)
+  else:
+      lataaAlusta()
+      save(pelitilanne)
+  if pelitilanne["vaarVast"] > 6:
+      print("Hävisit viimekerralla, ladataan uusi peli...") #jos hävinnyt viimekerralla, lataa uuden pelin.
+      lataaAlusta()
+      save(pelitilanne)    
+  peliKoko()
+except:
+  print("Jokin meni pieleen... käynnistä peli uudelleen!")
